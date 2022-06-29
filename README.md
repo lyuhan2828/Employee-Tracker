@@ -13,4 +13,4 @@
 Run node index.js to start the application.
 
 Video on the application
-https://drive.google.com/file/d/1cN8XDKLPuQ859FYEzv-9egIq8eHGUPU_/preview
+[Untitled_ Jun 29, 2022 3_08 PM.zip](https://github.com/lyuhan2828/Employee-Tracker/files/9013593/Untitled_.Jun.29.2022.3_08.PM.zip)
