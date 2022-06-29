@@ -3,9 +3,6 @@ import inquirer from 'inquirer';
 import mysql from 'mysql2';
 import table from "console.table"
 
-function addEmployee(params) {
-  
-}
 
 const db = mysql.createConnection(
   {
@@ -55,16 +52,35 @@ function ViewEmployee() {
   })
 }
 function UpdateEmployeeRole() {
-  let sqlcall = "INSERT INTO employe;"
-  db.query(sqlcall, (error, table)=> {
-    if(error) {
-      throw error
-    }
-    else {
-      console.table(table)
-      init()
-    }
+  inquirer
+  .prompt([
+    {
+    type: "list",
+    name: "employee",
+    message: "Which employee's role you want to update?",
+    choices: ["Kunal Singh", "Malia Lourd", "Tom Allen", "Melissa Rodriguez"],
+    },
+    {
+    type: "list",
+    name: "role",
+    message: "Which role do you want to change?",
+    choices: ["Secretary", "Lawyer", "Software Engineer", "Accountant"],
+    },
+  ])
+  .then(function (answers) {
+    console.log(answers);
+    console.log(answers.update);
   })
+  // let sqlcall = "UPDATE employee ;"
+  // db.query(sqlcall, (error, table)=> {
+  //   if(error) {
+  //     throw error
+  //   }
+  //   else {
+  //     console.table(table)
+  //     init()
+  //   }
+  // })
 }
 
 function init() {
@@ -74,7 +90,7 @@ function init() {
         type: "list",
         name: "role",
         message: "What would you like to do",
-        choices : ["Add Department", "Add Role", "Add Employee", "View Role", "View Department", "View Employee", "Update Employee Role"],
+        choices : ["View Role", "View Department", "View Employee","Add Department", "Add Role", "Add Employee", "Update Employee Role"],
       },
 
     ])
@@ -93,10 +109,6 @@ function init() {
           .then(function (departmentAnswers) {
             console.log(departmentAnswers);
             init();
-            /// create implementation for addEmployee
-
-
-            addEmployee();
           });
       } 
       else if (answers.role == "Add Role") {
